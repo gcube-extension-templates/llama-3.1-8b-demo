@@ -31,6 +31,9 @@
 | 저장공간 | 20GB (모델 다운로드 포함) | 30GB 이상 |
 | Python | 3.10 이상 | 3.11 |
 
+> ✅ 기본값 4-bit 양자화로 RTX 40 시리즈 전 라인업(RTX 4060 8GB~)에서 실행 가능합니다.  
+> VRAM 16GB 이상 환경에서는 `run.py`의 `USE_4BIT = False`로 변경 시 더 높은 품질로 실행할 수 있습니다.
+
 > ⚠️ Hugging Face에서 모델을 다운로드하려면 **Hugging Face 계정 및 모델 사용 동의**가 필요합니다.  
 > [여기](https://huggingface.co/meta-llama/Meta-Llama-3.1-8B-Instruct)에서 동의 후 진행해주세요.
 
