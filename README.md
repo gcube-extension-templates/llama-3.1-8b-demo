@@ -93,6 +93,7 @@ python run.py
 llama-3.1-8b-demo/
 ├── README.md          # 프로젝트 설명 (현재 파일)
 ├── requirements.txt   # 필요한 Python 패키지 목록
+├── setup.sh           # 패키지 설치 + 모델 다운로드 자동화 스크립트
 └── run.py             # 모델 실행 스크립트
 ```
 
