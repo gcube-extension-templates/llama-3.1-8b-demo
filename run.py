@@ -12,8 +12,10 @@ import transformers
 # 설정 (원하는 대로 수정 가능)
 # =============================================
 
-# 사용할 모델 ID (Hugging Face Hub)
-MODEL_ID = "meta-llama/Meta-Llama-3.1-8B-Instruct"
+# 모델 경로 (setup.sh 실행 후 로컬 경로 사용)
+# setup.sh를 실행하지 않은 경우 Hugging Face Hub에서 자동 다운로드
+MODEL_ID = "/workspace/models/llama-3.1-8b-instruct"
+FALLBACK_MODEL_ID = "meta-llama/Meta-Llama-3.1-8B-Instruct"
 
 # 여기에 원하는 질문을 입력하세요!
 USER_PROMPT = "인공지능이란 무엇인가요? 쉽게 설명해 주세요."
@@ -29,7 +31,13 @@ USE_4BIT = False
 
 def load_model(model_id: str, use_4bit: bool):
     """모델과 토크나이저를 로드합니다."""
-    print(f"모델 로딩 중... (처음 실행 시 다운로드가 진행됩니다)")
+    import os
+    # 로컬 경로에 모델이 없으면 Hugging Face Hub에서 다운로드
+    if not os.path.exists(model_id):
+        print(f"⚠️  로컬 모델 경로({model_id})를 찾을 수 없습니다.")
+        print(f"   Hugging Face Hub에서 다운로드합니다: {FALLBACK_MODEL_ID}")
+        model_id = FALLBACK_MODEL_ID
+    print(f"모델 로딩 중... ({model_id})")
 
     model_kwargs = {
         "torch_dtype": torch.bfloat16,

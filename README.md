@@ -51,13 +51,14 @@ cd llama-3.1-8b-demo
 pip install -r requirements.txt
 ```
 
-### 3. Hugging Face 로그인
+### 3. Setup 실행 (패키지 설치 + 모델 다운로드 한번에)
 
 ```bash
-huggingface-cli login
+bash setup.sh
 ```
 
-> 로그인 시 Hugging Face에서 발급받은 Access Token을 입력합니다.  
+> ⚠️ Llama 모델은 Hugging Face 인증이 필요합니다.  
+> 워크로드 환경변수에 `HF_TOKEN`을 설정하거나, setup.sh 실행 중 안내에 따라 직접 로그인해주세요.  
 > Token 발급: https://huggingface.co/settings/tokens
 
 ### 4. 모델 실행
